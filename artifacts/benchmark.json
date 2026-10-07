@@ -1,0 +1,607 @@
+{
+  "dataset": {
+    "source_url": "https://archive.ics.uci.edu/static/public/174/parkinsons.zip",
+    "citation": "Little, M. (2007). Parkinsons. UCI Machine Learning Repository. https://doi.org/10.24432/C59C74",
+    "license": "CC BY 4.0",
+    "rows": 195,
+    "subjects": 32,
+    "features": 22,
+    "labels": {
+      "0": 48,
+      "1": 147
+    },
+    "subject_labels": {
+      "0": 8,
+      "1": 24
+    },
+    "missing_cells": 0,
+    "sha256": "a36116c2deac07895b79ce97a2f99a1b3720ac4892995ff5c3b9ccb397ed2bc5"
+  },
+  "evaluation": {
+    "method": "5-fold stratified group cross-validation; all recordings from a person remain in one fold; metrics computed after averaging recording scores per person",
+    "random_state": 26139,
+    "folds": 5,
+    "subject_disjoint": true,
+    "probability_note": "SVM decision scores are monotonically rescaled for comparison; none of the model outputs are clinically calibrated probabilities."
+  },
+  "classical_models": {
+    "Logistic Regression": {
+      "accuracy": 0.75,
+      "sensitivity": 0.8333333333333334,
+      "specificity": 0.5,
+      "precision": 0.8333333333333334,
+      "f1": 0.8333333333333334,
+      "roc_auc": 0.6614583333333333,
+      "training_seconds_mean": 0.017862019990570844,
+      "inference_ms_per_recording_mean": 0.06760413103114857,
+      "fold_metrics_mean": {
+        "accuracy": 0.7428571428571429,
+        "sensitivity": 0.8400000000000001,
+        "specificity": 0.5,
+        "precision": 0.85,
+        "f1": 0.8307070707070707,
+        "roc_auc": 0.705
+      },
+      "fold_metrics_std": {
+        "accuracy": 0.15739517981941342,
+        "sensitivity": 0.1673320053068151,
+        "specificity": 0.5,
+        "precision": 0.14907119849998599,
+        "f1": 0.1009535195062758,
+        "roc_auc": 0.24264171117101857
+      }
+    },
+    "RBF SVM": {
+      "accuracy": 0.75,
+      "sensitivity": 0.8333333333333334,
+      "specificity": 0.5,
+      "precision": 0.8333333333333334,
+      "f1": 0.8333333333333334,
+      "roc_auc": 0.6041666666666666,
+      "training_seconds_mean": 0.014099540002644063,
+      "inference_ms_per_recording_mean": 0.13912138968114016,
+      "fold_metrics_mean": {
+        "accuracy": 0.7428571428571429,
+        "sensitivity": 0.8400000000000001,
+        "specificity": 0.5,
+        "precision": 0.85,
+        "f1": 0.8307070707070707,
+        "roc_auc": 0.62
+      },
+      "fold_metrics_std": {
+        "accuracy": 0.15739517981941342,
+        "sensitivity": 0.1673320053068151,
+        "specificity": 0.5,
+        "precision": 0.14907119849998599,
+        "f1": 0.1009535195062758,
+        "roc_auc": 0.4147288270665544
+      }
+    },
+    "Random Forest": {
+      "accuracy": 0.8125,
+      "sensitivity": 0.9583333333333334,
+      "specificity": 0.375,
+      "precision": 0.8214285714285714,
+      "f1": 0.8846153846153846,
+      "roc_auc": 0.75,
+      "training_seconds_mean": 0.6682818799978122,
+      "inference_ms_per_recording_mean": 0.7676757140800674,
+      "fold_metrics_mean": {
+        "accuracy": 0.8095238095238095,
+        "sensitivity": 0.96,
+        "specificity": 0.4,
+        "precision": 0.8428571428571429,
+        "f1": 0.8862626262626263,
+        "roc_auc": 0.82
+      },
+      "fold_metrics_std": {
+        "accuracy": 0.12931881537143114,
+        "sensitivity": 0.08944271909999157,
+        "specificity": 0.5477225575051662,
+        "precision": 0.1557659736552012,
+        "f1": 0.07698533736476322,
+        "roc_auc": 0.2683281572999748
+      }
+    }
+  },
+  "explainability": {
+    "method": "held-out-fold permutation importance using ROC-AUC",
+    "feature_importance_mean": [
+      {
+        "model": "Logistic Regression",
+        "feature": "spread1",
+        "importance_mean": 0.08139283154121862
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "PPE",
+        "importance_mean": 0.04744516129032257
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "spread2",
+        "importance_mean": 0.027159856630824354
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "MDVP:APQ",
+        "importance_mean": 0.00850681003584225
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "MDVP:Shimmer",
+        "importance_mean": 0.00584157706093188
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "D2",
+        "importance_mean": 0.005109677419354827
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "MDVP:Fhi(Hz)",
+        "importance_mean": 0.003387813620071685
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "Shimmer:DDA",
+        "importance_mean": -0.00086666666666668
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "Shimmer:APQ3",
+        "importance_mean": -0.0009777777777777907
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "Shimmer:APQ5",
+        "importance_mean": -0.003445878136200747
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "MDVP:PPQ",
+        "importance_mean": -0.005053046594982092
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "Jitter:DDP",
+        "importance_mean": -0.006186379928315432
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "MDVP:RAP",
+        "importance_mean": -0.006186379928315434
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "MDVP:Shimmer(dB)",
+        "importance_mean": -0.012247311827956997
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "MDVP:Jitter(Abs)",
+        "importance_mean": -0.013331899641577077
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "DFA",
+        "importance_mean": -0.013386379928315418
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "MDVP:Fo(Hz)",
+        "importance_mean": -0.013812903225806476
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "HNR",
+        "importance_mean": -0.014471684587813621
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "MDVP:Flo(Hz)",
+        "importance_mean": -0.01806523297491041
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "MDVP:Jitter(%)",
+        "importance_mean": -0.01903799283154123
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "NHR",
+        "importance_mean": -0.052672401433691764
+      },
+      {
+        "model": "Logistic Regression",
+        "feature": "RPDE",
+        "importance_mean": -0.055620071684587824
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "spread1",
+        "importance_mean": 0.04778709677419352
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "spread2",
+        "importance_mean": 0.03415842293906808
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "PPE",
+        "importance_mean": 0.03209964157706092
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "MDVP:Fhi(Hz)",
+        "importance_mean": -0.0025612903225806635
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "Shimmer:APQ5",
+        "importance_mean": -0.006992831541218649
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "D2",
+        "importance_mean": -0.0072057347670251085
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "MDVP:Shimmer",
+        "importance_mean": -0.007434408602150562
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "MDVP:Jitter(Abs)",
+        "importance_mean": -0.009236559139784984
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "MDVP:APQ",
+        "importance_mean": -0.009279569892473147
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "MDVP:Shimmer(dB)",
+        "importance_mean": -0.010081003584229408
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "Shimmer:APQ3",
+        "importance_mean": -0.010106810035842333
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "Shimmer:DDA",
+        "importance_mean": -0.01024014336917566
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "Jitter:DDP",
+        "importance_mean": -0.013217921146953429
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "MDVP:RAP",
+        "importance_mean": -0.013217921146953429
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "MDVP:PPQ",
+        "importance_mean": -0.013392114695340528
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "MDVP:Jitter(%)",
+        "importance_mean": -0.015977060931899663
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "MDVP:Flo(Hz)",
+        "importance_mean": -0.01622580645161293
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "MDVP:Fo(Hz)",
+        "importance_mean": -0.017864516129032264
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "DFA",
+        "importance_mean": -0.019629390681003615
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "NHR",
+        "importance_mean": -0.03606953405017922
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "HNR",
+        "importance_mean": -0.04190609318996417
+      },
+      {
+        "model": "RBF SVM",
+        "feature": "RPDE",
+        "importance_mean": -0.0500494623655914
+      },
+      {
+        "model": "Random Forest",
+        "feature": "spread1",
+        "importance_mean": 0.047237992831541196
+      },
+      {
+        "model": "Random Forest",
+        "feature": "PPE",
+        "importance_mean": 0.042363440860215026
+      },
+      {
+        "model": "Random Forest",
+        "feature": "spread2",
+        "importance_mean": 0.022569175627240114
+      },
+      {
+        "model": "Random Forest",
+        "feature": "MDVP:APQ",
+        "importance_mean": 0.015446594982078801
+      },
+      {
+        "model": "Random Forest",
+        "feature": "MDVP:Fo(Hz)",
+        "importance_mean": 0.011399283154121842
+      },
+      {
+        "model": "Random Forest",
+        "feature": "D2",
+        "importance_mean": 0.001949103942652295
+      },
+      {
+        "model": "Random Forest",
+        "feature": "MDVP:Fhi(Hz)",
+        "importance_mean": 0.0017283154121863508
+      },
+      {
+        "model": "Random Forest",
+        "feature": "MDVP:Shimmer(dB)",
+        "importance_mean": -0.0008587813620071948
+      },
+      {
+        "model": "Random Forest",
+        "feature": "Shimmer:APQ3",
+        "importance_mean": -0.0011197132616487672
+      },
+      {
+        "model": "Random Forest",
+        "feature": "Shimmer:APQ5",
+        "importance_mean": -0.0015032258064516311
+      },
+      {
+        "model": "Random Forest",
+        "feature": "MDVP:Jitter(Abs)",
+        "importance_mean": -0.0015698924731183173
+      },
+      {
+        "model": "Random Forest",
+        "feature": "MDVP:RAP",
+        "importance_mean": -0.002172759856630848
+      },
+      {
+        "model": "Random Forest",
+        "feature": "MDVP:Shimmer",
+        "importance_mean": -0.0023849462365591644
+      },
+      {
+        "model": "Random Forest",
+        "feature": "MDVP:Jitter(%)",
+        "importance_mean": -0.003055197132616503
+      },
+      {
+        "model": "Random Forest",
+        "feature": "Shimmer:DDA",
+        "importance_mean": -0.0037483870967742125
+      },
+      {
+        "model": "Random Forest",
+        "feature": "MDVP:PPQ",
+        "importance_mean": -0.004141218637992847
+      },
+      {
+        "model": "Random Forest",
+        "feature": "Jitter:DDP",
+        "importance_mean": -0.004661648745519764
+      },
+      {
+        "model": "Random Forest",
+        "feature": "NHR",
+        "importance_mean": -0.005032258064516159
+      },
+      {
+        "model": "Random Forest",
+        "feature": "RPDE",
+        "importance_mean": -0.009941935483870986
+      },
+      {
+        "model": "Random Forest",
+        "feature": "DFA",
+        "importance_mean": -0.010762007168458829
+      },
+      {
+        "model": "Random Forest",
+        "feature": "MDVP:Flo(Hz)",
+        "importance_mean": -0.012945519713261657
+      },
+      {
+        "model": "Random Forest",
+        "feature": "HNR",
+        "importance_mean": -0.014559139784946268
+      }
+    ],
+    "caveat": "Predictive associations on this small dataset are not causal or biological explanations."
+  },
+  "quantum_status": "completed",
+  "quantum": {
+    "dataset": {
+      "source_url": "https://archive.ics.uci.edu/static/public/174/parkinsons.zip",
+      "citation": "Little, M. (2007). Parkinsons. UCI Machine Learning Repository. https://doi.org/10.24432/C59C74",
+      "license": "CC BY 4.0",
+      "rows": 195,
+      "subjects": 32,
+      "features": 22,
+      "labels": {
+        "0": 48,
+        "1": 147
+      },
+      "subject_labels": {
+        "0": 8,
+        "1": 24
+      },
+      "missing_cells": 0,
+      "sha256": "a36116c2deac07895b79ce97a2f99a1b3720ac4892995ff5c3b9ccb397ed2bc5"
+    },
+    "configuration": {
+      "model": "Variational quantum classifier (VQC)",
+      "simulator": "PennyLane default.qubit (statevector)",
+      "encoding": "AngleEmbedding with Y rotations",
+      "ansatz": "StronglyEntanglingLayers",
+      "layers": 2,
+      "qubits": 4,
+      "epochs": 15,
+      "optimizer": "Adam, step size 0.025",
+      "fold_configurations": [
+        {
+          "fold": 1,
+          "original_feature_count": 22,
+          "selected_feature_count": 4,
+          "quantum_input_count": 4,
+          "qubit_count": 4,
+          "feature_representation": "training-fold PCA components",
+          "angle_scaling": "training-fold-fitted min-max to [-pi, pi]",
+          "pca_explained_variance_ratio_sum": 0.8601094668597838
+        },
+        {
+          "fold": 2,
+          "original_feature_count": 22,
+          "selected_feature_count": 4,
+          "quantum_input_count": 4,
+          "qubit_count": 4,
+          "feature_representation": "training-fold PCA components",
+          "angle_scaling": "training-fold-fitted min-max to [-pi, pi]",
+          "pca_explained_variance_ratio_sum": 0.828568970930741
+        },
+        {
+          "fold": 3,
+          "original_feature_count": 22,
+          "selected_feature_count": 4,
+          "quantum_input_count": 4,
+          "qubit_count": 4,
+          "feature_representation": "training-fold PCA components",
+          "angle_scaling": "training-fold-fitted min-max to [-pi, pi]",
+          "pca_explained_variance_ratio_sum": 0.8434622087787639
+        },
+        {
+          "fold": 4,
+          "original_feature_count": 22,
+          "selected_feature_count": 4,
+          "quantum_input_count": 4,
+          "qubit_count": 4,
+          "feature_representation": "training-fold PCA components",
+          "angle_scaling": "training-fold-fitted min-max to [-pi, pi]",
+          "pca_explained_variance_ratio_sum": 0.8435702787216328
+        },
+        {
+          "fold": 5,
+          "original_feature_count": 22,
+          "selected_feature_count": 4,
+          "quantum_input_count": 4,
+          "qubit_count": 4,
+          "feature_representation": "training-fold PCA components",
+          "angle_scaling": "training-fold-fitted min-max to [-pi, pi]",
+          "pca_explained_variance_ratio_sum": 0.8374515807598382
+        }
+      ],
+      "score_note": "Rescaled expectation value; not a calibrated probability."
+    },
+    "summary": {
+      "accuracy": 0.40625,
+      "sensitivity": 0.4166666666666667,
+      "specificity": 0.375,
+      "precision": 0.6666666666666666,
+      "f1": 0.5128205128205128,
+      "roc_auc": 0.40625
+    },
+    "training_seconds_mean": 0.7459574999520555,
+    "inference_ms_per_recording_mean": 0.4306653673470528,
+    "fold_metrics_mean": {
+      "accuracy": 0.3952380952380953,
+      "sensitivity": 0.41,
+      "specificity": 0.3,
+      "precision": 0.5166666666666667,
+      "f1": 0.43896103896103894,
+      "roc_auc": 0.385
+    },
+    "fold_metrics_std": {
+      "accuracy": 0.31479035963882684,
+      "sensitivity": 0.39433488306260706,
+      "specificity": 0.2738612787525831,
+      "precision": 0.32489314482696546,
+      "f1": 0.3536242783590169,
+      "roc_auc": 0.36725331856907706
+    }
+  },
+  "quantum_utility": {
+    "status": "Insufficient evidence",
+    "reason": "The paired subject bootstrap interval does not resolve whether the pre-set 0.05 ROC-AUC margin is met.",
+    "comparator": "RBF SVM",
+    "metric": "paired subject-level ROC-AUC difference (quantum minus classical)",
+    "observed_delta": -0.19791666666666663,
+    "bootstrap_95_percent_interval": [
+      -0.5,
+      0.10416666666666669
+    ],
+    "practical_margin": 0.05,
+    "bootstrap_samples": 2000,
+    "subject_count": 32,
+    "caveat": "Exploratory cross-validation comparison on a small dataset; bootstrap interval does not include full model-training or external-validation uncertainty."
+  },
+  "model_artifacts": {
+    "dataset_sha256": "a36116c2deac07895b79ce97a2f99a1b3720ac4892995ff5c3b9ccb397ed2bc5",
+    "dataset_rows": 195,
+    "training_subjects": 32,
+    "feature_columns": [
+      "MDVP:Fo(Hz)",
+      "MDVP:Fhi(Hz)",
+      "MDVP:Flo(Hz)",
+      "MDVP:Jitter(%)",
+      "MDVP:Jitter(Abs)",
+      "MDVP:RAP",
+      "MDVP:PPQ",
+      "Jitter:DDP",
+      "MDVP:Shimmer",
+      "MDVP:Shimmer(dB)",
+      "Shimmer:APQ3",
+      "Shimmer:APQ5",
+      "MDVP:APQ",
+      "Shimmer:DDA",
+      "NHR",
+      "HNR",
+      "RPDE",
+      "DFA",
+      "spread1",
+      "spread2",
+      "D2",
+      "PPE"
+    ],
+    "classical_model_file": "classical_models.joblib",
+    "quantum_model_file": "quantum_model.joblib",
+    "quantum_refit": {
+      "qubits": 4,
+      "layers": 2,
+      "epochs": 15
+    },
+    "purpose": "Reproducible research artifacts. Evaluation results come only from subject-disjoint out-of-fold predictions.",
+    "microphone_inference": "Not supported: microphone features have not been shown compatible with the UCI model schema."
+  },
+  "model_artifact_status": "saved"
+}

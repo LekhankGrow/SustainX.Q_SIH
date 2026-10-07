@@ -1,0 +1,10 @@
+streamlit==1.45.1
+numpy==2.2.6
+pandas==2.2.3
+scipy==1.15.3
+scikit-learn==1.6.1
+pennylane==0.42.1
+autoray==0.7.2
+plotly==6.1.2
+soundfile==0.13.1
+joblib==1.5.1

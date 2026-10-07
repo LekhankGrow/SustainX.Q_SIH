@@ -1,0 +1,38 @@
+{
+  "dataset_sha256": "a36116c2deac07895b79ce97a2f99a1b3720ac4892995ff5c3b9ccb397ed2bc5",
+  "dataset_rows": 195,
+  "training_subjects": 32,
+  "feature_columns": [
+    "MDVP:Fo(Hz)",
+    "MDVP:Fhi(Hz)",
+    "MDVP:Flo(Hz)",
+    "MDVP:Jitter(%)",
+    "MDVP:Jitter(Abs)",
+    "MDVP:RAP",
+    "MDVP:PPQ",
+    "Jitter:DDP",
+    "MDVP:Shimmer",
+    "MDVP:Shimmer(dB)",
+    "Shimmer:APQ3",
+    "Shimmer:APQ5",
+    "MDVP:APQ",
+    "Shimmer:DDA",
+    "NHR",
+    "HNR",
+    "RPDE",
+    "DFA",
+    "spread1",
+    "spread2",
+    "D2",
+    "PPE"
+  ],
+  "classical_model_file": "classical_models.joblib",
+  "quantum_model_file": "quantum_model.joblib",
+  "quantum_refit": {
+    "qubits": 4,
+    "layers": 2,
+    "epochs": 15
+  },
+  "purpose": "Reproducible research artifacts. Evaluation results come only from subject-disjoint out-of-fold predictions.",
+  "microphone_inference": "Not supported: microphone features have not been shown compatible with the UCI model schema."
+}
